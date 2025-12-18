@@ -7,7 +7,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'IME Voice Up',
+      title: 'Voice Up',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.indigo,

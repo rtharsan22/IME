@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../screens/home_screen.dart'; // <-- adjust path
 import '../widgets/custom_app_bar.dart'; // adjust path if needed
 
 class ProfileScreen extends StatelessWidget {
@@ -19,12 +20,8 @@ class ProfileScreen extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(14),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black12,
-            blurRadius: 8,
-            offset: const Offset(0, 3),
-          ),
+        boxShadow: const [
+          BoxShadow(color: Colors.black12, blurRadius: 8, offset: Offset(0, 3)),
         ],
       ),
       child: Row(
@@ -137,15 +134,31 @@ class ProfileScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.only(top: 12, bottom: 16),
         children: [
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-            child: Text(
-              "Notifications",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+          // ✅ Back button + Notifications text in SAME ROW
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+            child: Row(
+              children: [
+                IconButton(
+                  padding: EdgeInsets.zero,
+                  constraints: const BoxConstraints(),
+                  icon: const Icon(Icons.arrow_back, size: 22),
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (_) => const HomeScreen()),
+                    );
+                  },
+                ),
+                const SizedBox(width: 8),
+                const Text(
+                  "Notifications",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+                ),
+              ],
             ),
           ),
 
-          // 1) RDA completed repair
           _buildNotificationCard(
             title: "RDA Department",
             subtitle:
@@ -157,7 +170,6 @@ class ProfileScreen extends StatelessWidget {
             badgeText: "Completed",
           ),
 
-          // 2) RDX considered request
           _buildNotificationCard(
             title: "RDX Division",
             subtitle:
@@ -169,7 +181,6 @@ class ProfileScreen extends StatelessWidget {
             badgeText: "In progress",
           ),
 
-          // 3) People liked your post
           _buildNotificationCard(
             title: "Community",
             subtitle:
@@ -179,7 +190,6 @@ class ProfileScreen extends StatelessWidget {
             iconColor: Colors.redAccent,
           ),
 
-          // 4) Follow-up from RDA
           _buildNotificationCard(
             title: "RDA Department",
             subtitle:
@@ -189,7 +199,6 @@ class ProfileScreen extends StatelessWidget {
             iconColor: Colors.blueGrey,
           ),
 
-          // 5) Generic notification
           _buildNotificationCard(
             title: "RDX & RDA",
             subtitle:

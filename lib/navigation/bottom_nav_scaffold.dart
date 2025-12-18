@@ -81,9 +81,13 @@ class _BottomNavScaffoldState extends State<BottomNavScaffold> {
             label: 'My Request', // ← changed
           ),
 
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.notifications),
+          //   label: 'Notifications', // ← changed
+          // ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: 'Notifications', // ← changed
+            icon: Icon(Icons.menu),
+            label: 'menu', // ← changed
           ),
         ],
       ),

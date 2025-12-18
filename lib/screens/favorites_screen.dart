@@ -25,7 +25,6 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   // ================== POST HANDLER ==================
   void _onPostPressed() {
     final overlay = Overlay.of(context);
-    if (overlay == null) return;
 
     // Create overlay entry for the toast notification
     final overlayEntry = OverlayEntry(
@@ -173,7 +172,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
             ),
             const SizedBox(height: 6),
             DropdownButtonFormField<String>(
-              value: _selectedIssueType,
+              initialValue: _selectedIssueType,
               decoration: InputDecoration(
                 hintText: 'Select issue types...',
                 filled: true,
