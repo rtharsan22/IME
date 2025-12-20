@@ -1,5 +1,7 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
-import '../screens/notifications_screen.dart';
+import 'package:voice_up/screens/profile_screen.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -19,21 +21,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
       title: Row(
         children: [
-          // // === MENU ICON ===
-          // IconButton(
-          //   icon: const Icon(Icons.menu, color: Colors.white, size: 30),
-          //   onPressed: () {
-          //     // TODO: open drawer or menu later
-          //   },
-          // ),
-
-          // === VOICE UP TEXT (ALWAYS VISIBLE) ===
-          Text(
-            title,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
+          // === VOICE UP TEXT (MOVED 20px RIGHT) ===
+          Padding(
+            padding: const EdgeInsets.only(left: 20),
+            child: Text(
+              title,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
 
@@ -52,7 +49,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const NotificationsScreen(),
+                      builder: (context) => const ProfileScreen(),
                     ),
                   );
                 },
